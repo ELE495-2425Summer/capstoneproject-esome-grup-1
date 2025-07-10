@@ -80,7 +80,7 @@ The system records the command, processes it using STT and LLM modules, and exec
 
 
 
-## Installation
+### Installation
 Describe the steps required to install and set up the project. Include any prerequisites, dependencies, and commands needed to get the project running.
 
 ```bash
@@ -89,8 +89,11 @@ git clone https://github.com/username/project-name.git
 cd project-name
 ```
 
-## Usage
-Provide instructions and examples on how to use the project. Include code snippets or screenshots where applicable.
+### Usage
+The system can be controlled via a web interface and responds to Turkish voice commands issued by the user. The workflow consists of the following steps:
+- **1. Starting the System via Web Interface**
+  
+
 
 ## Screenshots
 Include screenshots of the project in action to give a visual representation of its functionality. You can also add videos of running project to YouTube and give a reference to it here. 
