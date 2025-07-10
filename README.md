@@ -9,7 +9,18 @@
 - [Acknowledgements](#acknowledgements)
 
 ## Introduction
-Provide a brief overview of the project, its purpose, and what problem it aims to solve.
+This project, titled *"DOĞAL DİL İLE KONTROL EDİLEBİLEN OTONOM MİNİ ARAÇ"* (Voice-Controlled Autonomous Mini Vehicle), was developed as part of the *"2024–2025 Yaz ELE 495 Bitirme Tasarım Projesi"* course.
+
+The main objective of this project is to design a wheeled autonomous mini vehicle that can understand spoken natural Turkish commands and convert them into low-level movement instructions that it can execute. The vehicle uses a microphone and speech-to-text system to capture voice commands from the user, and sends the transcribed text to a large language model (LLM) for interpretation. The LLM parses the natural language and converts it into a sequence of basic movement commands (e.g., move forward, turn left, etc.).
+
+These commands are then executed on the vehicle using onboard sensors and motor control logic. While performing the actions, the system provides natural-sounding Turkish spoken feedback to the user (e.g., "I'm moving forward now", "Turning left"). The goal is to create a more human-like interaction by minimizing robotic speech patterns.
+
+A typical usage scenario might include a user saying:  
+*"Engel çıkana kadar düz git, sonra sola dön, 2 saniye ileri git, sağa dön."*  
+The system records the command, processes it using STT and LLM modules, and executes the parsed instructions in order using motor drivers and sensor input.
+
+This project combines hardware-software integration, natural language processing, real-time control, and voice-based human-robot interaction in a compact and interactive autonomous platform.
+
 
 ## Features
 List the key features and functionalities of the project.
