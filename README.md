@@ -94,6 +94,12 @@ To ensure proper operation of the system, the hardware components must be correc
 - **System Initialization: Hardware Setup**
   
  1-Powering the Motor Driver: The motor driver board, which controls the movement of the vehicle, is powered by inserting appropriate batteries.
+
+ 2-Connecting the Microphone and Speaker: To enable voice input and Turkish voice feedback, a microphone and speaker are connected to the Orange Pi. The microphone is typically connected via USB, while the speaker is connected to the 3.5 mm audio jack or through a USB audio adapter.
+
+ 3-Powering the Orange Pi and Arduino: Both the Orange Pi 4 LTS and Arduino UNO are powered using a single external portable power source (e.g., a powerbank). The powerbank is connected to the Orange Pi through its Type-C power input, which powers the board. Once the Orange Pi is turned on, it supplies 5V to the Arduino UNO via its USB port.
+
+ When the hardware connections are properly completed and the system is successfully powered on, the vehicle informs the user that it is ready to operate by playing the following voice message: “System is ready. Please activate the vehicle.” This feedback indicates that initial system checks have been completed and the user can proceed to start the system via the web interface.
   
   
 
