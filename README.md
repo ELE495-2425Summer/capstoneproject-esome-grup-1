@@ -65,7 +65,14 @@ The system records the command, processes it using STT and LLM modules, and exec
 - math.h
 
 ### Applications
-- **Voice-Controlled Home Assistant Robots:** The system can serve as a foundation for smart robots that assist users in domestic environments through spoken language. 
+- **Voice-Controlled Home Assistant Robots:** The system can serve as a foundation for smart robots that assist users in domestic environments through spoken language.
+- **Assistive Mobility Solutions for Individuals With Disabilities:** By eliminating the need for manual control, the system allows users with limited mobility to interact with and command robotic platforms using only voice.
+- **Educational and Research Platforms:** The integration of natural language processing, real-time control, and embedded systems makes this project suitable for use in academic settings for teaching and research purposes.
+- **Autonomous Patrol or Delivery Robots:** The vehicle can be adapted for simple security patrols or indoor delivery tasks, guided by voice commands rather than manual programming.
+- **Public Interactive Robots:** It can be employed in public venues such as museums or fairs as an interactive guide robot, responding to visitor instructions in Turkish.
+
+
+
 ### Services 
 
 ## Installation
