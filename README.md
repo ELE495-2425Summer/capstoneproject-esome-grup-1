@@ -40,6 +40,7 @@ The system records the command, processes it using STT and LLM modules, and exec
 - **Development PC** uses Windows 11 for running the web server and interface.
 
 **Packages:**
+
 *Python packages*
 - openai
 - sounddevice
