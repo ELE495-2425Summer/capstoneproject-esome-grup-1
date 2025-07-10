@@ -33,7 +33,26 @@ The system records the command, processes it using STT and LLM modules, and exec
   -  Ttec 2BB214UG 10.000mAh Powerbank: [https://www.teknosa.com/ttec-2bb214ug-recharger-pro-lcd-10000-mah-pd-30w-tasinabilir-hizli-sarj-aletipowerbank-uzay-grisi-p-125432432](https://www.teknosa.com/ttec-2bb214ug-recharger-pro-lcd-10000-mah-pd-30w-tasinabilir-hizli-sarj-aletipowerbank-uzay-grisi-p-125432432)
   -  Genel Markalar 18650 Tekli Lityum Ion Pil Yuvası: [https://www.trendyol.com/genel-markalar/18650-pil-yatagi-tekli-lityum-ion-pil-yuvasi-1-kanal-p-135522244?boutiqueId=61&merchantId=730358](https://www.trendyol.com/genel-markalar/18650-pil-yatagi-tekli-lityum-ion-pil-yuvasi-1-kanal-p-135522244?boutiqueId=61&merchantId=730358)
     
-### Operating System and packages
+### Operating Systems and Packages
+**Operating Systems:**
+- **Orange Pi 4 LTS** runs a Linux-based Armbian operating system.
+- **Arduino UNO** uses the Arduino platform with no full operating system (bare-metal programming in C/C++).
+- **Development PC** uses Windows 11 for running the web server and interface.
+
+**Packages:**
+*Python packages*
+- openai
+- sounddevice
+- scipy
+  - `webrtcvad` — Voice Activity Detection (konuşma algılama)
+  - `pyserial` — Arduino ile UART iletişimi
+  - `numpy` — Sayısal hesaplamalar ve sinyal işleme
+  - `flask` — (arayüz tarafında sunucu kullanıldıysa)
+  - `python-socketio` — Web arayüzüyle gerçek zamanlı iletişim
+  - `requests` — (OpenAI dışı HTTP API çağrıları varsa)
+  - `client_sender` — Projeye özel, web arayüzüne veri gönderen modül
+
+
 ### Applications 
 ### Services 
 
