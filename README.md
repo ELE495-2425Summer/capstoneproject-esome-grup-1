@@ -20,8 +20,10 @@ A typical usage scenario might include a user saying:
 The system records the command, processes it using STT and LLM modules, and executes the parsed instructions in order using motor drivers and sensor input. During execution, the system responds with real-time Turkish voice feedback such as *"İleri gidiyorum."* or *"Sola dönüyorum."*
 
 ## Features
-- Hardware:
-  --
+- Hardware
+  -- [OrangePi 4 LTS:](https://www.robotistan.com/orange-pi-4-lts-4gb)
+  -- Arduino UNO R3:
+  -- 
 - Operating System and packages
 - Applications 
 - Services 
