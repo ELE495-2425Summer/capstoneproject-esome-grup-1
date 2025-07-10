@@ -65,7 +65,7 @@ The system records the command, processes it using STT and LLM modules, and exec
 - math.h
 
 ### Applications
-
+- **Voice-Controlled Home Assistant Robots:** The system can serve as a foundation for smart robots that assist users in domestic environments through spoken language. 
 ### Services 
 
 ## Installation
