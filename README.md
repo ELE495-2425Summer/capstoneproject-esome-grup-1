@@ -41,7 +41,7 @@ The system records the command, processes it using STT and LLM modules, and exec
 
 **Packages:**
 
-*Python Packages:*
+*Orange Pi Packages:*
 - openai
 - sounddevice
 - scipy
@@ -64,9 +64,8 @@ The system records the command, processes it using STT and LLM modules, and exec
 - ArduinoJson.h
 - math.h
 
+### Applications
 
-
-### Applications 
 ### Services 
 
 ## Installation
