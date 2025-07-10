@@ -41,17 +41,29 @@ The system records the command, processes it using STT and LLM modules, and exec
 
 **Packages:**
 
-*Python packages*
+*Python Packages:*
 - openai
 - sounddevice
 - scipy
-  - `webrtcvad` — Voice Activity Detection (konuşma algılama)
-  - `pyserial` — Arduino ile UART iletişimi
-  - `numpy` — Sayısal hesaplamalar ve sinyal işleme
-  - `flask` — (arayüz tarafında sunucu kullanıldıysa)
-  - `python-socketio` — Web arayüzüyle gerçek zamanlı iletişim
-  - `requests` — (OpenAI dışı HTTP API çağrıları varsa)
-  - `client_sender` — Projeye özel, web arayüzüne veri gönderen modül
+- webrtcvad
+- pyserial
+- numpy
+- flask
+- python-socketio
+- requests
+- client_sender
+
+*Interface Packages:*
+- socketio
+- time
+- json
+
+*Arduino Packages:*
+- Wire.h
+- MPU6050_light.h
+- ArduinoJson.h
+- math.h
+
 
 
 ### Applications 
