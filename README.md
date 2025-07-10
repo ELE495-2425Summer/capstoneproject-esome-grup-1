@@ -73,7 +73,12 @@ The system records the command, processes it using STT and LLM modules, and exec
 
 
 
-### Services 
+### Services
+- **Speech-to-Text (STT) Service:** Spoken Turkish commands are transcribed into text using OpenAI’s Whisper-1 model via an online API. This service captures user input and converts it into textual data for processing.
+- **Natural Language Interpretation Service (LLM):** The transcribed text is sent to GPT-4o mini, which interprets the natural language command and converts it into a sequence of low-level movement instructions. This interaction is performed through an online API.
+- **Text-to-Speech (TTS) Service:** After executing each command, the system provides verbal feedback in Turkish using Alloy TTS, producing clear and human-like voice responses to enhance user interaction.
+
+
 
 ## Installation
 Describe the steps required to install and set up the project. Include any prerequisites, dependencies, and commands needed to get the project running.
