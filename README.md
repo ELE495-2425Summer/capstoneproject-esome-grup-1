@@ -93,7 +93,7 @@ cd project-name
 The system can be controlled via a web interface and responds to Turkish voice commands issued by the user. The workflow consists of the following steps:
 - **Starting the System via Web Interface**
   
-- 1-The user accesses a locally hosted web interface running on the Orange Pi.
+ 1-The user accesses a locally hosted web interface running on the Orange Pi.
   
   
   
