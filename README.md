@@ -90,11 +90,10 @@ cd project-name
 ```
 
 ### Usage
-The system can be controlled via a web interface and responds to Turkish voice commands issued by the user. The workflow consists of the following steps:
-- **Starting the System via Web Interface**
+To ensure proper operation of the system, the hardware components must be correctly connected and powered before use. The initial setup consists of the following steps:
+- **System Initialization: Hardware Setup**
   
- 1-The user accesses a locally hosted web interface running on the Orange Pi.
-  
+ 1-Powering the Motor Driver: The motor driver board, which controls the movement of the vehicle, is powered by inserting appropriate batteries.
   
   
 
