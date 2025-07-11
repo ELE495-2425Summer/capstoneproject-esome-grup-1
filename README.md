@@ -117,6 +117,22 @@ To ensure proper operation of the system, the hardware components must be correc
  1-The user gives voice commands such as:
 
  “ileri git", "geri git", "sola dön", "geriye dön", “3 saniye düz git, sonra sağa dön 2 saniye geri git engel görürsen sola dön"
+
+ 2-While executing the received commands, the system provides real-time voice feedback to the user, announcing the specific action it is performing at each step. This enhances user awareness and ensures a more natural and interactive control experience.
+
+ - **Vehicle Behavior and System Monitoring via Interface**
+
+ Once the system is active, the user can visually monitor the operational state of the vehicle through the web interface. The interface provides real-time updates and feedback related to various system components:
+
+ Vehicle Status indicates whether the system is idle, executing a command, or waiting for input.
+
+ Recognized Voice Command displays the most recent voice instruction that was successfully captured by the system.
+
+ Parsed Commands (JSON) shows the low-level movement instructions derived from the natural language command.
+
+ Task History (if enabled) allows the user to review previously executed commands for traceability and analysis.
+
+ This visual tracking capability enables the user to verify that commands are correctly interpreted and executed. Additionally, it enhances system transparency and facilitates better control over the vehicle’s behavior. 
   
   
   
