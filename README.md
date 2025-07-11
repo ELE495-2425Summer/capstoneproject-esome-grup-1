@@ -142,6 +142,8 @@ To ensure proper operation of the system, the hardware components must be correc
 
 ### Screenshots
 
+Some images from project:
+
 ![Mini Araç Görseli](images/img_2.png)
 
 ![Mini Araç Görseli](images/img_3.jpg)
