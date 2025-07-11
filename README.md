@@ -107,12 +107,16 @@ To ensure proper operation of the system, the hardware components must be correc
 
 - **System Initialization: Interface Usage**
 
- 1-After the system provides the voice feedback “System is ready, please activate the vehicle”, the user starts the vehicle via the Start/Stop button located on the web interface. Clicking this button initiates the background processes responsible for capturing, interpreting, and executing voice commands.
-  (buraya sibel birşeyler ekleyecek, mümkünse 1 numaralı maddeyi en son madde olarak yaz)
+ 1-To begin, Node.js must be installed on the system. Then, by double-clicking the arayuz_ac.vbs file, the arayuz_ac.bat script is triggered, which installs the required packages and automatically launches the server.
+
+ 2-After the system provides the voice feedback “System is ready, please activate the vehicle”, the user starts the vehicle via the Start/Stop button located on the web interface. Clicking this button initiates the background processes responsible for capturing, interpreting, and executing voice commands.
+  
 
 - **Command and Execution Flow**
 
- 1-
+ 1-The user gives voice commands such as:
+
+ “ileri git", "geri git", "sola dön", "geriye dön", “3 saniye düz git, sonra sağa dön 2 saniye geri git engel görürsen sola dön"
   
   
   
