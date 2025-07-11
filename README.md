@@ -140,8 +140,17 @@ To ensure proper operation of the system, the hardware components must be correc
   
 
 
-## Screenshots
-Include screenshots of the project in action to give a visual representation of its functionality. You can also add videos of running project to YouTube and give a reference to it here. 
+### Screenshots
+
+![Mini Araç Görseli](images/img2.jpg)
+
+![Mini Araç Görseli](images/img3.jpg)
+
+![Mini Araç Görseli](images/img4.jpg)
+
+
+
+
 
 ## Acknowledgements
 Give credit to those who have contributed to the project or provided inspiration. Include links to any resources or tools used in the project.
