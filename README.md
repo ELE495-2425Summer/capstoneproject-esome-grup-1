@@ -110,6 +110,7 @@ To ensure proper operation of the system, the hardware components must be correc
  1-To begin, Node.js must be installed on the system. Then, by double-clicking the arayuz_ac.vbs file, the arayuz_ac.bat script is triggered, which installs the required packages and automatically launches the server.
 
  2-After the system provides the voice feedback “System is ready, please activate the vehicle”, the user starts the vehicle via the Start/Stop button located on the web interface. Clicking this button initiates the background processes responsible for capturing, interpreting, and executing voice commands.
+ 
  ![Web Interface Screenshot](images/img_1.png)
   
 
