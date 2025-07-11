@@ -99,13 +99,21 @@ To ensure proper operation of the system, the hardware components must be correc
 
  3-Powering the Orange Pi and Arduino: Both the Orange Pi 4 LTS and Arduino UNO are powered using a single external portable power source (e.g., a powerbank). The powerbank is connected to the Orange Pi through its Type-C power input, which powers the board. Once the Orange Pi is turned on, it supplies 5V to the Arduino UNO via its USB port.
 
+ 4-The Orange Pi is connected to a Wi-Fi network using a monitor and peripheral input devices during the initial setup phase.
+
  When the hardware connections are properly completed and the system is successfully powered on, the vehicle informs the user that it is ready to operate by playing the following voice message: “System is ready. Please activate the vehicle.” This feedback indicates that initial system checks have been completed and the user can proceed to start the system via the web interface.
 
  To ensure proper operation of the interface, the system must be fully powered and connected to the local network before use. The web interface setup consists of the following steps:
 
 - **System Initialization: Interface Usage**
 
-  1-
+ 1-After the system provides the voice feedback “System is ready, please activate the vehicle”, the user starts the vehicle via the Start/Stop button located on the web interface. Clicking this button initiates the background processes responsible for capturing, interpreting, and executing voice commands.
+  (buraya sibel birşeyler ekleyecek, mümkünse 1 numaralı maddeyi en son madde olarak yaz)
+
+- **Command and Execution Flow**
+
+ 1-
+  
   
   
 
