@@ -35,7 +35,7 @@ The system records the command, processes it using STT and LLM modules, and exec
     
 ### Operating Systems and Packages
 **Operating Systems:**
-- **Orange Pi 4 LTS** runs a Linux-based Armbian operating system.
+- **Orange Pi 4 LTS** runs a Linux-based Ubuntu operating system.
 - **Arduino UNO** uses the Arduino platform with no full operating system (bare-metal programming in C/C++).
 - **Development PC** uses Windows 11 for running the web server and interface.
 
@@ -51,7 +51,7 @@ The system records the command, processes it using STT and LLM modules, and exec
 - flask
 - python-socketio
 - requests
-- client_sender
+  
 
 *Interface Packages:*
 - socketio
