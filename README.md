@@ -34,13 +34,13 @@ The system records the command, processes it using STT and LLM modules, and exec
   -  Genel Markalar 18650 Tekli Lityum Ion Pil Yuvası: [https://www.trendyol.com/genel-markalar/18650-pil-yatagi-tekli-lityum-ion-pil-yuvasi-1-kanal-p-135522244?boutiqueId=61&merchantId=730358](https://www.trendyol.com/genel-markalar/18650-pil-yatagi-tekli-lityum-ion-pil-yuvasi-1-kanal-p-135522244?boutiqueId=61&merchantId=730358)
     
 ### Operating Systems and Packages
-**Operating Systems:**
+#### **Operating Systems**
 - **Orange Pi 4 LTS** runs a Linux-based Ubuntu operating system.
 - **Arduino UNO** uses the Arduino platform with no full operating system (bare-metal programming in C/C++).
 - **Development PC** uses Windows 11 for running the web server and interface.
 
-**Packages:**
-*Orange Pi Packages:*
+#### **Packages**
+##### *Orange Pi Packages*
 - openai
 - sounddevice
 - scipy
@@ -51,12 +51,12 @@ The system records the command, processes it using STT and LLM modules, and exec
 - python-socketio
 - requests
   
-*Interface Packages:*
+##### *Interface Packages*
 - socketio
 - time
 - json
 
-*Arduino Packages:*
+##### *Arduino Packages*
 - Wire.h
 - MPU6050_light.h
 - ArduinoJson.h
@@ -75,7 +75,7 @@ The system records the command, processes it using STT and LLM modules, and exec
 - **Text-to-Speech (TTS) Service:** After executing each command, the system provides verbal feedback in Turkish using Alloy TTS, producing clear and human-like voice responses to enhance user interaction.
 
 ### Installation
-####  Prerequisites:
+####  Prerequisites
 To run the project smoothly, the following software and libraries need to be installed:
 
 ##### **Python and Required Packages on Orange Pi**
@@ -108,7 +108,7 @@ To work with the project’s web interface and manage the Orange Pi and Arduino 
 ##### **OpenAI API Key**
 - You must create an **OpenAI API key** to enable AI features in the project. Sign up or log in at [https://platform.openai.com/account/api-keys](https://platform.openai.com/account/api-keys). Create a new API key and save it securely. You will need to add this key to the appropriate configuration file or environment variable in the project before running it. 
 
-#### Installation Steps:
+#### Installation Steps
 1) Open your terminal or command prompt and run:
 ```bash
 git clone [https://github.com/YOUR_USERNAME/YOUR_REPOSITORY.git](https://github.com/ELE495-2425Summer/capstoneproject-esome-grup-1.git)
@@ -174,54 +174,33 @@ python3 robot_main.py
 
 ### Usage
 To ensure proper operation of the system, the hardware components must be correctly connected and powered before use. The initial setup consists of the following steps:
-- **System Initialization: Hardware Setup**
-  
- 1-Powering the Motor Driver: The motor driver board, which controls the movement of the vehicle, is powered by inserting appropriate batteries.
+#### **Hardware Setup**
+  1) The motor driver board, which controls the movement of the vehicle, is powered by inserting appropriate batteries.
+  2) To enable voice input and Turkish voice feedback, a microphone and speaker are connected to the Orange Pi. The microphone is typically connected via USB, while the speaker is connected to the 3.5 mm audio jack or through a USB audio adapter.
+  3) Both the Orange Pi 4 LTS and Arduino UNO are powered using a single external portable power source (e.g., a powerbank). The powerbank is connected to the Orange Pi through its Type-C power input, which powers the board. Once the Orange Pi is turned on, it supplies 5V to the Arduino UNO via its USB port.
+  4) The Orange Pi is connected to a Wi-Fi network using a monitor and peripheral input devices during the initial setup phase.
 
- 2-Connecting the Microphone and Speaker: To enable voice input and Turkish voice feedback, a microphone and speaker are connected to the Orange Pi. The microphone is typically connected via USB, while the speaker is connected to the 3.5 mm audio jack or through a USB audio adapter.
+When the hardware connections are properly completed and the system is successfully powered on, user can run the user interface.
 
- 3-Powering the Orange Pi and Arduino: Both the Orange Pi 4 LTS and Arduino UNO are powered using a single external portable power source (e.g., a powerbank). The powerbank is connected to the Orange Pi through its Type-C power input, which powers the board. Once the Orange Pi is turned on, it supplies 5V to the Arduino UNO via its USB port.
-
- 4-The Orange Pi is connected to a Wi-Fi network using a monitor and peripheral input devices during the initial setup phase.
-
- When the hardware connections are properly completed and the system is successfully powered on, the vehicle informs the user that it is ready to operate by playing the following voice message: “System is ready. Please activate the vehicle.” This feedback indicates that initial system checks have been completed and the user can proceed to start the system via the web interface.
-
- To ensure proper operation of the interface, the system must be fully powered and connected to the local network before use. The web interface setup consists of the following steps:
-
-- **System Initialization: Interface Usage**
-
- 1-To begin, Node.js must be installed on the system. Then, by double-clicking the arayuz_ac.vbs file, the arayuz_ac.bat script is triggered, which installs the required packages and automatically launches the server.
-
- 2-After the system provides the voice feedback “System is ready, please activate the vehicle”, the user starts the vehicle via the Start/Stop button located on the web interface. Clicking this button initiates the background processes responsible for capturing, interpreting, and executing voice commands.
+#### **Interface Setup**
+  1) To begin, Node.js must be installed on the system as mentiond in Installation section. Then, by double-clicking the **arayuz_ac.vbs** file, the arayuz_ac.bat script is triggered. This .bat file installs any required Node.js packages (if not already installed) and automatically launches the server.
  
  ![Web Interface Screenshot](images/img_1.png)
+
+The interface provides real-time updates and feedback related to various system components. Additionally, the user can control the vehicle by clicking "ENGINE START/STOP" button:
+   - **Araç Durumu(Vehicle Status)** indicates whether the system is idle, executing a command, or waiting for input.
+   - **Algılanan Sesli Komut(Recognized Voice Command)** displays the most recent voice instruction that was successfully captured by the system.
+   - **Yorumlanan Komutlar(JSON) (Parsed Commands (JSON))** shows the low-level movement instructions derived from the natural language command.
+   - **Görev Geçmişi(Task History)** allows the user to review previously executed commands for traceability and analysis.
+
+After running program, the vehicle informs the user that it is ready to operate by playing the following voice message: “Sistem hazır. Lütfen aracı aktif hale getirin.” This feedback indicates that initial system checks have been completed and the user can proceed to start the system via the web interface. To ensure proper operation of the interface, the system must be fully powered and connected to the local network before use.
   
-
-- **Command and Execution Flow**
-
- 1-The user gives voice commands such as:
-
- “ileri git", "geri git", "sola dön", "geriye dön", “3 saniye düz git, sonra sağa dön 2 saniye geri git engel görürsen sola dön"
-
- 2-While executing the received commands, the system provides real-time voice feedback to the user, announcing the specific action it is performing at each step. This enhances user awareness and ensures a more natural and interactive control experience.
-
- - **Vehicle Behavior and System Monitoring via Interface**
-
- Once the system is active, the user can visually monitor the operational state of the vehicle through the web interface. The interface provides real-time updates and feedback related to various system components:
-
- Vehicle Status indicates whether the system is idle, executing a command, or waiting for input.
-
- Recognized Voice Command displays the most recent voice instruction that was successfully captured by the system.
-
- Parsed Commands (JSON) shows the low-level movement instructions derived from the natural language command.
-
- Task History (if enabled) allows the user to review previously executed commands for traceability and analysis.
-
- This visual tracking capability enables the user to verify that commands are correctly interpreted and executed. Additionally, it enhances system transparency and facilitates better control over the vehicle’s behavior. 
-  
-  
-  
-
+#### **Command and Execution Flow**
+1) For the vehicle to work, robot_main.py must be running, the server must be started and the hardware setup must be completed.
+2) After running program, the vehicle informs the user that it is ready to operate by playing the following voice message: *“Sistem hazır. Lütfen aracı aktif hale getirin.”* This feedback indicates that initial system checks have been completed and the user can proceed to start the system via the web interface.
+3) The user gives voice commands such as:
+     “ileri git", "geri git", "sola dön", "geriye dön", “3 saniye düz git, sonra sağa dön 2 saniye geri git engel görürsen sola dön"
+4) While executing the received commands, the system provides real-time voice feedback to the user, announcing the specific action it is performing at each step. This enhances user awareness and ensures a more natural and interactive control experience.
 
 ### Screenshots
 
@@ -238,11 +217,6 @@ Some images from project:
 You can watch the project demonstration video of our voice-controlled autonomous mini vehicle from the link below. The video showcases the overall system architecture and the voice command processing workflow
 
 [Watch our project demo on YouTube](https://www.youtube.com/watch?v=e5j5I-P8uos)
-
-
-
-
-
 
 ## Acknowledgements
 Give credit to those who have contributed to the project or provided inspiration. Include links to any resources or tools used in the project.
