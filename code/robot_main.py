@@ -5,9 +5,6 @@ Revision 23: Cleaned up syntax, restored defs, fixed Arduino handshake and captu
 """
 import client_sender         # Custom module to send data (e.g., to a UI or logging server)
 
-from dotenv import load_dotenv
-load_dotenv()
-import os  
 import asyncio               # For asynchronous programming and concurrent tasks
 import json                  # To parse and generate JSON data
 import uuid                  # For generating unique identifiers (e.g., for temp files)
@@ -33,7 +30,7 @@ import re                    # Regular expressions for string pattern matching a
 # === USER CONFIG ==========================================================
 CONFIG = {
      # Your OpenAI API key for accessing GPT, Whisper, and TTS services
-    "OPENAI_API_KEY": os.getenv("OPENAI_API_KEY"),  # Load from environment variable
+    "OPENAI_API_KEY": "sk-...",
     "OPENAI_MODEL":    "gpt-4o-mini", # GPT model used for command parsing (lightweight version of GPT-4o)
     "WHISPER_MODEL":   "whisper-1", # Whisper model name for speech-to-text conversion
     "TTS_MODEL":       "tts-1",    # Text-to-speech model used to generate spoken responses
