@@ -81,12 +81,18 @@ The system records the command, processes it using STT and LLM modules, and exec
 
 
 ### Installation
-Describe the steps required to install and set up the project. Include any prerequisites, dependencies, and commands needed to get the project running.
+To run the project smoothly, the following software and libraries need to be installed:
+
+#### **Python and Required Packages on Orange Pi**
+- Python 3.10 or higher should be installed on the Orange Pi.
+You can check your Python version with:
 
 ```bash
-# Example commands
-git clone https://github.com/username/project-name.git
-cd project-name
+python3 --version
+```
+
+```bash
+python3 --version
 ```
 
 ### Usage
