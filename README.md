@@ -107,6 +107,76 @@ To work with the project’s web interface and manage the Orange Pi and Arduino 
 - **FileZilla:** For easy file transfer between your computer and Orange Pi, install FileZilla. [https://filezilla-project.org/](https://filezilla-project.org/)
 - All devices must be connected to the **same local network.**
 
+##### **Voice Recording**
+- For voice authentication, your voice recordings must be in **.wav format**. Ensure your recordings are clear and noise-free for accurate recognition.
+
+##### **OpenAI API Key**
+- You must create an OpenAI API key to enable AI features in the project. Sign up or log in at [https://platform.openai.com/account/api-keys](https://platform.openai.com/account/api-keys). Create a new API key and save it securely. You will need to add this key to the appropriate configuration file or environment variable in the project before running it. 
+
+#### Installation Steps:
+1) Open your terminal or command prompt and run:
+```bash
+git clone https://github.com/YOUR_USERNAME/YOUR_REPOSITORY.git
+```
+
+2) Open FileZilla and connect to your Orange Pi by entering **host(Orange Pi’s IP address), username(your Orange Pi username), password(your Orange Pi password) and port (generally 22 for SFTP/SSH).** Transfer the cloned Orange Pi project files and your voice record from your computer to the appropriate directory on the Orange Pi.
+   
+3) Open the Arduino IDE on your computer. Connect your Arduino board to your computer via USB. Open the Arduino sketch from the cloned repository. Select the correct board and port in Arduino IDE. Upload the code to the Arduino board.
+   
+4) Find your computer's local IP address. On Windows, you can run (e.g., 192.168.1.10):
+```bash
+ipconfig
+```
+Inside **client_sender.py**, find this line and replace it with your actual IP address:
+```bash
+SERVER_URL = "http://your_ip:3000"
+```
+After saving, re-send the **updated client_sender.py** file to your Orange Pi via FileZilla, replacing the old one.
+
+5) Navigate to the **interface** folder inside the cloned repository on your PC. Double-click the arayuz_ac.vbs file to start the server.-Open PuTTY and enter the Orange Pi’s IP address to connect via SSH. Login with your Orange Pi credentials.
+
+6) Connect to Orange Pi via SSH using PuTTY and open terminal. Activate the Python virtual environment if not already active:
+```bash
+source venv/bin/activate
+```
+Run **voiceprint_builder.py** to record your voice for authentication, you need to run this script only once to record and save your voice signatures before running the main control program:
+```bash
+python3 voiceprint_builder.py
+```
+When the process completes successfully, the output will be:
+```bash
+Voiceprints of group members have been saved.
+```
+
+7) Open **robot_main.py** file on your PC and locate the USER CONFIG section, which looks like this:
+```bash
+# === USER CONFIG ==========================================================
+CONFIG = {
+    # Your OpenAI API key for accessing GPT, Whisper, and TTS services
+    "OPENAI_API_KEY": # "sk-...",
+    "OPENAI_MODEL":    "gpt-4o-mini",
+    "WHISPER_MODEL":   "whisper-1",
+    "TTS_MODEL":       "tts-1",
+    "TTS_VOICE":       "alloy",
+    "CAPTURE_RATE":    48000,
+    "PROCESS_RATE":    16000,
+    "CHUNK_SEC":       7,
+    "AUDIO_DEVICE":    1,
+    "USB_SPEAKER_DEVICE": "plughw:2,0",
+    "SERIAL_PORT":     "/dev/ttyUSB0",
+    "BAUDRATE":        115200,
+    "ACK_TIMEOUT":     20.0,
+    "VAD_MODE":        2,
+    "VAD_SILENCE_MS":  800
+}
+```
+Replace the line "OPEN_API_KEY"" with your actual API key and re-send the **updated robot_main.py** file to your Orange Pi after saving it.
+
+8) You are now ready to start the main control program. Using Orange Pi terminal, run **robot_main.py**:
+```bash
+python3 robot_main.py
+```
+
 ### Usage
 To ensure proper operation of the system, the hardware components must be correctly connected and powered before use. The initial setup consists of the following steps:
 - **System Initialization: Hardware Setup**
