@@ -220,7 +220,7 @@ You can watch the project demonstration video of our voice-controlled autonomous
 
 ### Acknowledgements
 
-- **Group Members:**
+ **Group Members:**
 
 - Mustafa Ekrem Tanyıldız: [@mtanyildiz](https://github.com/mtanyildiz)
   
