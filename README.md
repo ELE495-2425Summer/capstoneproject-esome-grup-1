@@ -72,7 +72,6 @@ The system records the command, processes it using STT and LLM modules, and exec
 - **Public Interactive Robots:** It can be employed in public venues such as museums or fairs as an interactive guide robot, responding to visitor instructions in Turkish.
 
 
-
 ### Services
 - **Speech-to-Text (STT) Service:** Spoken Turkish commands are transcribed into text using OpenAI’s Whisper-1 model via an online API. This service captures user input and converts it into textual data for processing.
 - **Natural Language Interpretation Service (LLM):** The transcribed text is sent to GPT-4o mini, which interprets the natural language command and converts it into a sequence of low-level movement instructions. This interaction is performed through an online API.
@@ -81,6 +80,7 @@ The system records the command, processes it using STT and LLM modules, and exec
 
 
 ### Installation
+####  Prerequisites:
 To run the project smoothly, the following software and libraries need to be installed:
 
 #### **Python and Required Packages on Orange Pi**
@@ -90,10 +90,22 @@ You can check your Python version with:
 ```bash
 python3 --version
 ```
-
+- The following Python packages must be installed:
 ```bash
-python3 --version
+pip install openai sounddevice scipy webrtcvad pyserial numpy flask python-socketio requests
 ```
+Note: time and json are part of the Python standard library and do not need to be installed separately.
+
+#### **Required Arduino Libraries**
+- First, install the Arduino IDE on your computer:
+Download it from the official site: [https://www.arduino.cc/en/software](https://www.arduino.cc/en/software)
+- Then, open the Arduino IDE and install the necessary libraries:Wire.h (usually pre-installed), MPU6050_light.h, ArduinoJson.h, math.h (standard Arduino library).
+
+#### **On the Computer (PC)** 
+To work with the project’s web interface and manage the Orange Pi and Arduino devices, make sure the following tools are installed on your computer:
+- Node.js: The web interface requires Node.js. [https://nodejs.org/]( https://nodejs.org/)
+- PuTTY:  For connecting via SSH to Orange Pi or other devices, install PuTTY. [https://www.putty.org/](https://www.putty.org/)
+- FileZilla: For easy file transfer between your computer and Orange Pi, install FileZilla. [https://filezilla-project.org/](https://filezilla-project.org/)
 
 ### Usage
 To ensure proper operation of the system, the hardware components must be correctly connected and powered before use. The initial setup consists of the following steps:
