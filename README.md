@@ -220,14 +220,14 @@ You can watch the project demonstration video of our voice-controlled autonomous
 
 ### Acknowledgements
 
--##Group Members:##
+- **Group Members:**
 
-- [@mtanyildiz](https://github.com/mtanyildiz)
+- Mustafa Ekrem Tanyıldız: [@mtanyildiz](https://github.com/mtanyildiz)
   
-- [@elifkucukpetek](https://github.com/elifkucukpetek)
+- Elif Küçükpetek: [@elifkucukpetek](https://github.com/elifkucukpetek)
   
-- [@kib3l3](https://github.com/kib3l3)
+- Sibel Kaya: [@kib3l3](https://github.com/kib3l3)
   
-- [@ozanozkaya0](https://github.com/ozanozkaya0)
+- Ozan Özkaya: [@ozanozkaya0](https://github.com/ozanozkaya0)
 
 
