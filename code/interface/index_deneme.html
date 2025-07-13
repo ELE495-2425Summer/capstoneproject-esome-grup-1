@@ -1,0 +1,196 @@
+<!DOCTYPE html>   <!-- Bu satir, bu belgenin bir HTML5 belgesi oldugunu belirtir. 
+                       Web tarayicisina "Bu dosya HTML5 formatinda yazildi" demenin yoludur. -->
+
+<html lang="tr">  <!-- Sayfa dilini Turkce olarak ayarliyoruz -->
+
+<!-- <head> etiketi: HTML belgesinin baslik ve meta bilgilerini icerir. 
+     Gorunmeyen ama sayfa hakkinda bilgi veren bolumdur. Tarayiciya sayfa 
+     basligi, karakter seti, stiller, scriptler gibi bilgiler burada verilir.-->
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <meta charset="utf-8"> <!-- sayfanin karakter kodlamasi: UTF-8 -->
+  <title>Mini Otonom Araç Arayüzü</title> <!-- sayfanin basligi -->
+
+  <!-- <style> etiketi, ayri bir CSS(style) dosyasi yuklemeden dogrudan HTML icine CSS kurallarini yazmamizi saglar.
+       'body{}': sayfanin tum icerigini kaplayan ana alan
+       'h1, h2{}': baslik etiketleri, h1 en buyuk, h2 ise h1'in alt basligi 
+       '.section{}': section'larin stili ayarlanir
+       'ul{}'(unordered list): belirlenen stil sirasiz listelere uygulanir
+       'INFO{}': bilgi mesajlari
+       'ERROR{}': hata mesajlari  
+       'code{}': kod parcaciklarinin stili icin - orn. JSON formatindaki komutlar
+       '.section-middle':
+       '.button-wrapper':
+       '.outer-ring':
+       '.middle-ring':
+       '.engine-core':
+       '.engine-core i':
+  -->
+  <style>
+    body { background-image: url('kokpit.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; font-family: 'Orbitron', sans-serif; }
+    h1 { color: #000000; text-align: center; } 
+    h2 { color: #333; }
+    .section { background-color: rgba(255, 255, 255, 0.75); padding: 15px; margin-bottom: 20px; border-radius: 10px; box-shadow: 0 0 5px #ccc; }
+    ul { padding-left: 20px; max-height: 200px; overflow-y: auto; }
+    .INFO { color: #4a4; }
+    .ERROR { color: #a44; }
+    code { background: #eee; padding: 3px 6px; border-radius: 5px; }
+    .section-middle {display: flex; justify-content: center; align-items: center; flex-direction: column;  gap: 5px; height: 60px; background: #fff; padding: 15px; margin-bottom: 20px; border-radius: 10px; box-shadow: 0 0 5px #ccc; }
+    .button-wrapper { display: flex; justify-content: center; align-items: center; height: 200px; }
+    .outer-ring { width: 115px; height: 115px; border: 8px solid black; border-radius: 50%; display: flex; justify-content: center; align-items: center; }
+    .middle-ring { width: 100px; height: 100px; border: 10px solid green; border-radius: 50%; display: flex; justify-content: center; align-items: center; transition: border-color 0.3s ease; }
+    .engine-core { width: 100px; height: 100px; border-radius: 50%; background-color: black; color: white; border: none; font-size: 14px; font-weight: bold; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+    .engine-core i {font-size: 20px;}
+  </style>
+</head>
+
+<!-- <body> HTML belgesinde user'in tarayacida gorecegi tum icerikleri barindirir
+     <div> sayfada bolum olusturan genel HTML etiketi, class ile CSS stili verilir -->
+<body>
+  <div class="section-middle" >
+    <h1>Mini Otonom Araç Kullanıcı Arayüzü</h1> <!-- heading 1 - en buyuk baslik -->
+  </div>
+
+  <div style="background-color: #f2f2f2; padding: 10px; border-radius: 10px; margin: 10px;">
+    <p><strong>Merhaba!</strong> Arabayı aktif hale getirmek lütfen "ENGINE START" düğmesine basın.</p>
+  </div>
+
+  <div class="button-wrapper">
+    <div class="outer-ring">
+      <div class="middle-ring" id="led-ring">
+        <button id="kontrolBtn" class="engine-core">
+          <i class="fas fa-power-off"></i><br>
+          <span>ENGINE START</span> 
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <audio id="engineSound" src="engine-start.mp3" preload="auto"></audio>
+
+  <div class="section">
+    <h2> Araç Durumu</h2> <!-- heading 2 - alt baslik-->
+    <div id="aracDurumu">Bekleniyor...</div> 
+  </div>
+
+  <div class="section">
+    <h2> Algılanan Sesli Komut</h2>
+    <div id="sesliKomut">Yok</div>
+  </div>
+
+  <div class="section">
+    <h2> Yorumlanan Komutlar (JSON)</h2>
+    <ul id="yorumlananKomutlar"></ul> <!-- ul sayesinde her gelen veri listenin icine JS tarafindan eklenir -->
+  </div>
+
+  <div class="section">
+    <h2> Görev Geçmişi</h2>
+    <ul id="gecmis"></ul> 
+  </div>
+
+<script src="/socket.io/socket.io.js"></script> <!-- tarayiciya Socket.IO istemci kutuphanesi yuklenir, 
+                                                       bu sayede JavaScript uzerinden server ile WebSocket baglantisinin
+                                                       kurulmasi mumkun olur, yani bu dosya tarayicinin io() fonksiyonunu
+                                                       tanimasini saglar -->
+
+
+
+<script>
+  const socket = io(); /* istemci ve server arasindaki WebSocket baglantisi kurulur, "socket" WebSocket baglantisini temsil eder,
+                          bu degisken ile mesajlar gonderilip dinlenilebilir */
+
+  
+  let aracAcik = false; // arabanin baslangic durumu -> kapali
+
+  // ENGINE START/STOP butonuna tıklanınca çalışacak olay dinleyici
+  document.getElementById('kontrolBtn').addEventListener('click', () => {
+    aracAcik = !aracAcik; // mevcut durumun tersi alinir
+    const durum = aracAcik ? 'ac' : 'kapat'; // aracAcik true ise 'ac', degilse 'kapat'
+    socket.emit('arac_kontrol', { type: 'arac_kontrol', durum }); // WebSocket uzerinden sunucuya 'arac_kontrol' olayi gonderilir
+ 
+    const led = document.getElementById('led-ring');         // LED halkasini temsil eden oge
+    const text = document.querySelector('#kontrolBtn span'); // Butonun icindeki <span> (yani yazi kismi)
+    const icon = document.querySelector('#kontrolBtn i');    // Butonun icindeki <i> (ikon kismi)
+
+    if (aracAcik) {
+      led.style.borderColor = '#d32f2f';   // LED halkasini kirmizi yap
+      text.textContent = 'ENGINE STOP';    // Buton usteundeki yaziyi 'ENGINE STOP' yap
+      icon.className = 'fas fa-power-off'; // ikonu yeniden ayarla
+
+      // motor sesi calinmasi icin
+      const sound = document.getElementById('engineSound');
+      sound.currentTime = 0;
+      sound.play();
+
+    } else {
+      led.style.borderColor = '#4caf50';   // LED halkasini yesil yap
+      text.textContent = 'ENGINE START';   // Buton usteundeki yaziyi 'ENGINE START' yap
+      icon.className = 'fas fa-power-off'; // ikonu yeniden ayarla
+    }
+  });
+
+  // HTML icindeki "id=logs" olan <ul> elemani secilir, logsU1 bu listeye referans olur 
+  // !!!! BOYLE BIR ID DOSYADA YOK , galiba terminale bastiriliyor !!!!!
+  const logsUl = document.getElementById('logs');
+  if (logsUl) { //logsU1 bos degilse
+
+    // sunucudan 'log' isimli mesaj geldiginde socket.on() tetiklenir, 'msg' sunucudan gelen log verisini icerir
+    socket.on('log', msg => {
+      const li = document.createElement('li'); // yeni bir liste elemani olusturulur
+      /* 'msg.ts': mesajin timestamp'i, s veya ms cinsinden
+         'new Date()': timestamp'ten gercek bir tarih/saat objesi(JavaScript Date objesi) olusturur
+                       olusturulan Date objesi .toLocaleTimeString() ile bulunulan bolgenin saat dilimine
+                       gore okunabilir bir string'e cevrilir
+         '`${...}`(template literal)': JS'te degisken veya ifadeleri string icinde birlestirmemizi saglar
+         '[${msg.lvl}]': mesajin seviyesi (ornegin INFO, ERROR...)
+         '${msg.msg}': msg objesinin gercek mesaj icerigi */
+      li.textContent = `${new Date(msg.ts).toLocaleTimeString()} [${msg.lvl}] ${msg.msg}`;
+      li.className = msg.lvl; // <li> ogesine CSS sinifi ataniyor, cunku bu siniflarin stilleri CSS dosyasinda (<li class = "INFO"> mesela) 
+      logsUl.appendChild(li); // olusturulan yeni <li> ogesi listenin sonuna eklenir
+      logsUl.scrollTop = logsUl.scrollHeight; // bu kod ile liste otomatik en alta kaydirilir
+    });
+  }
+
+  // 'veri_guncelle' olayi dinleniyor, bu olay tetiklendiginde veri_diger objesi geliyor
+  socket.on('veri_guncelle', veri_diger => {
+    /* HTML'deki id="sesliKomut" olan element bulunur, bu elementin icindeki metni 'veri_diger' objesindeki sesliKomut alanina esitliyoruz 
+       veri_diger.sesliKomut bossa 'Yok' yaziliyor, eger mesaj iceriyorsa gelen mesaj yaziliyor */
+    document.getElementById('sesliKomut').textContent = veri_diger.sesliKomut || 'Yok';
+
+    // KOMUTLAR LISTESI
+    const komutUl = document.getElementById('yorumlananKomutlar'); // HTML'deki id="yorumlananKomutlar" <ul> elementi aliniyor
+    komutUl.innerHTML = ''; // onceki <li> elemanlari tamamen siliniyor, liste temizleniyor
+    if (Array.isArray(veri_diger.yorumlananKomutlar)) { // eger "veri_diger" objesinin icindeki "yorumlananKomutlar" array ise
+      veri_diger.yorumlananKomutlar.forEach(k => {
+        const li = document.createElement('li');            // yeni <li> elementi olustur
+        li.innerHTML = `<code>${JSON.stringify(k)}</code>`; // komut objesini JSON formatindan stringe donusturuyoruz ve <code> etiketi ile kod gorunumu veriyoruz      
+        komutUl.appendChild(li);                            // olusturulan <li> ogesi listenin sonuna eklenir
+      });
+    }
+
+    // GOREV GECMISI
+    const gecmisUl = document.getElementById('gecmis'); // HTML'deki id="gecmis" <ul> elementi aliniyor
+    if (Array.isArray(veri_diger.gecmis)) {
+      veri_diger.gecmis.forEach(g => {
+        const li = document.createElement('li');
+        li.textContent = `${g.zaman} → ${g.komut}: ${g.aciklama}`; // liste elemani gorev bilgileriyle dolduruluyor 
+        gecmisUl.appendChild(li);
+      });
+    }
+  });
+
+  // 'arac_durumu_guncelle' Socket.IO araciligiyla dinleniyor, bu olay tetiklendiginde veri_arac_durumu objesi geliyor
+  socket.on('arac_durumu_guncelle', veri_arac_durumu => {
+    console.log("Araç durumu geldi:", veri_arac_durumu);
+    document.getElementById('aracDurumu').textContent = veri_arac_durumu.aracDurumu || 'Bilinmiyor';
+  });
+
+  window.addEventListener('beforeunload', () => {
+    navigator.sendBeacon('/kapat');  // sessizce sunucuya kapanmasi icin haber verir
+  });
+
+</script>
+</body>
+</html>
+ 
