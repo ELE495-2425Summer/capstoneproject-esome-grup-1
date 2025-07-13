@@ -150,6 +150,10 @@ Some images from project:
 
 ![Mini Araç Görseli](images/img_4.jpg)
 
+- **Project Demonstration Video**
+
+You can watch the project demonstration video of our voice-controlled autonomous mini vehicle from the link below. The video showcases the overall system architecture and the voice command processing workflow
+
 [Watch our project demo on YouTube](https://www.youtube.com/watch?v=e5j5I-P8uos)
 
 
