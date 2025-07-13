@@ -40,7 +40,6 @@ The system records the command, processes it using STT and LLM modules, and exec
 - **Development PC** uses Windows 11 for running the web server and interface.
 
 **Packages:**
-
 *Orange Pi Packages:*
 - openai
 - sounddevice
@@ -52,7 +51,6 @@ The system records the command, processes it using STT and LLM modules, and exec
 - python-socketio
 - requests
   
-
 *Interface Packages:*
 - socketio
 - time
@@ -71,13 +69,10 @@ The system records the command, processes it using STT and LLM modules, and exec
 - **Autonomous Patrol or Delivery Robots:** The vehicle can be adapted for simple security patrols or indoor delivery tasks, guided by voice commands rather than manual programming.
 - **Public Interactive Robots:** It can be employed in public venues such as museums or fairs as an interactive guide robot, responding to visitor instructions in Turkish.
 
-
 ### Services
 - **Speech-to-Text (STT) Service:** Spoken Turkish commands are transcribed into text using OpenAI’s Whisper-1 model via an online API. This service captures user input and converts it into textual data for processing.
 - **Natural Language Interpretation Service (LLM):** The transcribed text is sent to GPT-4o mini, which interprets the natural language command and converts it into a sequence of low-level movement instructions. This interaction is performed through an online API.
 - **Text-to-Speech (TTS) Service:** After executing each command, the system provides verbal feedback in Turkish using Alloy TTS, producing clear and human-like voice responses to enhance user interaction.
-
-
 
 ### Installation
 ####  Prerequisites:
@@ -111,12 +106,12 @@ To work with the project’s web interface and manage the Orange Pi and Arduino 
 - For voice authentication, your voice recordings must be in **.wav format**. Ensure your recordings are clear and noise-free for accurate recognition.
 
 ##### **OpenAI API Key**
-- You must create an OpenAI API key to enable AI features in the project. Sign up or log in at [https://platform.openai.com/account/api-keys](https://platform.openai.com/account/api-keys). Create a new API key and save it securely. You will need to add this key to the appropriate configuration file or environment variable in the project before running it. 
+- You must create an **OpenAI API key** to enable AI features in the project. Sign up or log in at [https://platform.openai.com/account/api-keys](https://platform.openai.com/account/api-keys). Create a new API key and save it securely. You will need to add this key to the appropriate configuration file or environment variable in the project before running it. 
 
 #### Installation Steps:
 1) Open your terminal or command prompt and run:
 ```bash
-git clone https://github.com/YOUR_USERNAME/YOUR_REPOSITORY.git
+git clone [https://github.com/YOUR_USERNAME/YOUR_REPOSITORY.git](https://github.com/ELE495-2425Summer/capstoneproject-esome-grup-1.git)
 ```
 
 2) Open FileZilla and connect to your Orange Pi by entering **host(Orange Pi’s IP address), username(your Orange Pi username), password(your Orange Pi password) and port (generally 22 for SFTP/SSH).** Transfer the cloned Orange Pi project files and your voice record from your computer to the appropriate directory on the Orange Pi.
@@ -133,13 +128,13 @@ SERVER_URL = "http://your_ip:3000"
 ```
 After saving, re-send the **updated client_sender.py** file to your Orange Pi via FileZilla, replacing the old one.
 
-5) Navigate to the **interface** folder inside the cloned repository on your PC. Double-click the arayuz_ac.vbs file to start the server.-Open PuTTY and enter the Orange Pi’s IP address to connect via SSH. Login with your Orange Pi credentials.
+5) Navigate to the **interface** folder inside the cloned repository on your PC. Double-click the **arayuz_ac.vbs** file to start the server.
 
-6) Connect to Orange Pi via SSH using PuTTY and open terminal. Activate the Python virtual environment if not already active:
+6) Open PuTTY and enter the Orange Pi’s IP address to connect via SSH. Login with your Orange Pi credentials and open terminal. Activate the Python virtual environment if not already active:
 ```bash
 source venv/bin/activate
 ```
-Run **voiceprint_builder.py** to record your voice for authentication, you need to run this script only once to record and save your voice signatures before running the main control program:
+Run **voiceprint_builder.py** to record your voice for authentication, you need to run this script **only once** to record and save your voice signatures **before running the main control program**:
 ```bash
 python3 voiceprint_builder.py
 ```
