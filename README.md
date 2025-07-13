@@ -218,8 +218,16 @@ You can watch the project demonstration video of our voice-controlled autonomous
 
 [Watch our project demo on YouTube](https://www.youtube.com/watch?v=e5j5I-P8uos)
 
-## Acknowledgements
-Give credit to those who have contributed to the project or provided inspiration. Include links to any resources or tools used in the project.
+### Acknowledgements
 
-[Contributor 1](https://github.com/user1)
-[Resource or Tool](https://www.nvidia.com)
+##  Group Members:
+
+- [@mtanyildiz](https://github.com/mtanyildiz)
+  
+- [@elifkucukpetek](https://github.com/elifkucukpetek)
+  
+- [@kib3l3](https://github.com/kib3l3)
+  
+- [@ozanozkaya0](https://github.com/ozanozkaya0)
+
+
