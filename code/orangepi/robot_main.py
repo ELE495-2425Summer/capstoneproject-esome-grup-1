@@ -30,7 +30,7 @@ import re                    # Regular expressions for string pattern matching a
 # === USER CONFIG ==========================================================
 CONFIG = {
      # Your OpenAI API key for accessing GPT, Whisper, and TTS services
-    "OPENAI_API_KEY": "sk-...",
+    "OPENAI_API_KEY": # "sk-...",
     "OPENAI_MODEL":    "gpt-4o-mini", # GPT model used for command parsing (lightweight version of GPT-4o)
     "WHISPER_MODEL":   "whisper-1", # Whisper model name for speech-to-text conversion
     "TTS_MODEL":       "tts-1",    # Text-to-speech model used to generate spoken responses
